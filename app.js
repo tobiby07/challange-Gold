@@ -4,18 +4,20 @@ const app = express();
 const multer = require("multer");
 const upload = multer({ dest: "public/uploads/" });
 
-const { loadDataMhs, findMhs, addDataMahasiswa, deleteDataMahasiswa, updateDataMahasiswa } = require("./utils/utils-data-mahasiswa.js");
 const { start, notFound, port } = require("./controller/main-controller.js");
 const { homePage } = require("./controller/homePage-Controller.js");
+const { addDataMahasiswa } = require("./utils/add-data-mahasiswa.js");
+const { updateDataMahasiswa } = require("./utils/edit-data-mahasiswa.js");
+const { deleteDataMahasiswa } = require("./utils/del-data-mahasiswa.js");
+const { findMhs, loadDataMhs} = require("./utils/main-utils.js");
 
-app.set("view engine", "ejs");
+app.set("view engine", "ejs"); 
 app.use(expressEjsLayout);
 app.use(express.static("public"));
 app.use('/dist', express.static(__dirname + '/node_modules/bootstrap/dist'));
 app.use("/uploads", express.static("public/uploads"));
 app.use(express.json());
 app.use(express.urlencoded());
-
 
 app.get("/", homePage)
 
@@ -100,4 +102,3 @@ app.get("/data-mahasiswa/:nama", detailMahasiswapage );
 
 app.use(notFound);
 app.listen(port, start );
-

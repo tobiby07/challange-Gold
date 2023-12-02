@@ -1,3 +1,10 @@
+const express = require("express");
+const expressEjsLayout = require("express-ejs-layouts");
+const app = express();
+const multer = require("multer");
+const upload = multer({ dest: "public/uploads/" });
+const uploadPhoto = upload.single('photo')
+
 const port = 3000
 
 const start = () => {
@@ -11,5 +18,10 @@ const start = () => {
   module.exports = {
     start, 
     notFound,
-    port
+    port,
+    expressEjsLayout,
+    app,
+    upload,
+    uploadPhoto,
+    express
   }

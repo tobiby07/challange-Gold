@@ -1,0 +1,40 @@
+<div class="container mt-3">
+  <div class="row">
+    <div class="col-md-8">
+      <h2>Daftar Mahasiswa</h2>
+      <br />
+      <a href="/tambah-mahasiswa" class="btn btn-success badge">Tambah Mahasiswa</a> <br /><br />
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">No</th>
+            <th scope="col">NIM</th>
+            <th scope="col">Nama</th>
+            <th scope="col">Kelas</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% mahasiswa.forEach((mahasiswa, i )=> { %>
+          <tr>
+            <th scope="row"><%= i+1 %></th>
+            <td><%= mahasiswa.nim %></td>
+            <td><%= mahasiswa.nama %></td>
+            <td><%= mahasiswa.kelas %></td>
+            <td>
+              <a href="/daftar-mahasiswa/<%=mahasiswa.id%>" class="btn btn-success badge">Data</a>
+              <td>
+                <!-- Form for deleting a student -->
+                <form method="POST" action="/mahasiswa/<%= mahasiswa.id %>?_method=DELETE" onsubmit="return confirm('Are you sure you want to delete this student?');">
+                  <button type="submit" class="btn btn-danger badge">Delete</button>
+                </form>
+              
+              </td>
+            </td>
+          </tr>
+          <% }); %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

@@ -8,6 +8,13 @@ const connection = {
       database: 'umikom-university',
       user: 'postgres',
       password: '123',
+  // },
+  // migrations: {
+  //   tableName: 'mahasiswa',
+  //   directory: './migrations'
+  // },
+  // seeds: {
+  //   directory: './seeds'
   }
 }
 
@@ -18,4 +25,5 @@ module.exports = {
   development: connection,
   staging: connection,
   production: connection,
+  connection
 };

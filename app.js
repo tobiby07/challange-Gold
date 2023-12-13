@@ -1,18 +1,33 @@
-const { start, notFound, port, app, expressEjsLayout, express } = require("./controller/main-controller.js");
-const { dataMahasiswapageRoute } = require("./routes/data-mahasiswa-route.js");
-const { homePageRouter } = require("./routes/home-page-route.js");
+const express = require("express");
+const expressEjsLayout = require("express-ejs-layouts");
+const app = express();
+const methodOverride = require("method-override");
 
-app.set("view engine", "ejs"); 
+const { dashboardRouter } = require("./routes/dashboard");
+const { notFound } = require("./controller/index-Controller");
+
+
+
+app.set("view engine", "ejs");
 app.use(expressEjsLayout);
 app.use(express.static("public"));
-app.use('/dist', express.static(__dirname + '/node_modules/bootstrap/dist'));
+app.use("/dist", express.static(__dirname + "/node_modules/bootstrap/dist"));
 app.use("/uploads", express.static("public/uploads"));
 app.use(express.json());
-app.use(express.urlencoded());
-
-app.use(homePageRouter)
-app.use(dataMahasiswapageRoute)
+app.use(express.urlencoded({ extended: true }));
+app.use(methodOverride("_method"));
 
 
+
+app.use(dashboardRouter)
+
+
+
+// inisialisasi server
+const port = 3000;
+
+const start = () => {
+  console.log(`Server is running on ${port}`);
+};
 app.use(notFound);
-app.listen(port, start );
+app.listen(port, start);

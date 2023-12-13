@@ -2,23 +2,20 @@
   <div class="row">
     <div class="col-md-8">
       <h2>Detail Mahasiswa</h2>
-      <% if (!mahasiswa) { %>
-      <p>Mahasiswa tidak ditemukan.</p>
-      <a href="/report"> < Kembali</a>
-      <% } else { %>
-      <div class="card" style="width: 18rem">
+      <br />
+      <div class="card">
         <div class="card-body">
-          <center><img src="<%= mahasiswa.photo %>" alt="<%= mahasiswa.nama %>'s photo" class="img-fluid" width="200" /></center>
           <h5 class="card-title"><%= mahasiswa.nama %></h5>
-          <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="/data-mahasiswa" class="card-link"> < Kembali </a>
-          <a href="/data-mahasiswa/edit/<%= mahasiswa.nama %>" class="btn btn-warning badge">Edit</a>
-
-          <a href="/data-mahasiswa/delete/<%= mahasiswa.nama %>" class="btn btn-danger badge" onclick="return confirm('Apakah anda yakin?')">Delete</a>
+          <p class="card-text">
+            <strong>NIM:</strong> <%= mahasiswa.nim %><br />
+            <strong>Kelas:</strong> <%= mahasiswa.kelas %><br />
+            <!-- Add more details as needed -->
+          </p>
         </div>
       </div>
-      <% } %>
+      <br />
+      <a href="/edit-mahasiswa/<%= mahasiswa.id %>" class="btn btn-primary"> Edit</a>
+      <a href="/daftar-mahasiswa" class="btn btn-primary">Back to List</a>
     </div>
   </div>
 </div>

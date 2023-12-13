@@ -2,11 +2,9 @@ const express = require("express");
 const expressEjsLayout = require("express-ejs-layouts");
 const app = express();
 const methodOverride = require("method-override");
-
+const { notFound } = require("./controller/z-index-Controller");
 const { dashboardRouter } = require("./routes/dashboard");
-const { notFound } = require("./controller/index-Controller");
-
-
+const { loginPageRoute } = require("./routes/landingPage");
 
 app.set("view engine", "ejs");
 app.use(expressEjsLayout);
@@ -17,11 +15,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
 
-
-
-app.use(dashboardRouter)
-
-
+app.use(loginPageRoute);
+app.use(dashboardRouter);
 
 // inisialisasi server
 const port = 3000;

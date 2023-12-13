@@ -2,19 +2,15 @@
   <h2>Edit Mahasiswa</h2>
   <form method="POST" action="/edit-mahasiswa/<%= mahasiswa.id %>?_method=PUT"  enctype="multipart/form-data" onsubmit="return confirm('Are you sure you want to delete this student?');">
 
-    <!-- Include any necessary form fields here -->
     <label for="nama">Nama:</label>
     <input type="text" id="nama" name="nama" value="<%= mahasiswa.nama %>" required>
 
-    <!-- Add other form fields as needed -->
 
-    <!-- Display existing photo -->
     <% if (mahasiswa.photo) { %>
       <p>Existing Photo:</p>
       <img src="<%= mahasiswa.photo %>" alt="Mahasiswa Photo" style="max-width: 200px; margin-bottom: 10px;">
     <% } %>
 
-    <!-- Upload new photo -->
     <label for="photo">Upload New Photo:</label>
     <input type="file" id="photo" name="photo">
     <button type="submit" class="btn btn-primary mt-3">Update Mahasiswa</button>

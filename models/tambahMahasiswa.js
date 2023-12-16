@@ -5,7 +5,7 @@ const postTambahMahasiswa = async (req, res) => {
     const photopath = req.file ? `/uploads/${req.file.filename}` : null;
     const angkatan = req.body.tahunangkatan;
     const nextNimValueResult = await knex.raw("SELECT nextval('nim_sequence')");
-    const nextNimValue = '0'+nextNimValueResult.rows[0].nextval ;
+    const nextNimValue = nextNimValueResult.rows[0].nextval.toString().padStart(3, '0') ;
     let kodekelas = "";
 
     if (req.body.kelas === "S1-INFORMATIKA") {

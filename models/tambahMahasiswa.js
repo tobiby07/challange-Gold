@@ -5,9 +5,14 @@ const postTambahMahasiswa = async (req, res) => {
     const photopath = req.file ? `/uploads/${req.file.filename}` : null;
     const angkatan = new Date().getFullYear();
 
-    const highestNimResult = await knex.raw("SELECT split_part(nim, '.', 3) as urutan FROM mahasiswa ORDER BY urutan DESC LIMIT 1");
+    const highestNimResult = await knex.raw(`
+    SELECT split_part(nim, '.', 3) as urutan 
+    FROM mahasiswa 
+    WHERE tahunangkatan = ${angkatan} 
+    ORDER BY urutan DESC 
+    LIMIT 1
+  `);
     const highestNimValue = highestNimResult.rows[0]?.urutan || 0;
-
     const nextNimValue = (parseInt(highestNimValue) + 1).toString().padStart(3, "0");
 
     let kodekelas = "";

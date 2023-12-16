@@ -3,13 +3,17 @@ const { knex } = require("../dbConnecting");
 const postTambahMahasiswa = async (req, res) => {
   try {
     const photopath = req.file ? `/uploads/${req.file.filename}` : null;
-    const angkatan = req.body.tahunangkatan;
-    const nextNimValueResult = await knex.raw("SELECT nextval('nim_sequence')");
-    const nextNimValue = nextNimValueResult.rows[0].nextval.toString().padStart(3, '0') ;
+    const angkatan = new Date().getFullYear();
+
+    const highestNimResult = await knex.raw("SELECT split_part(nim, '.', 3) as urutan FROM mahasiswa ORDER BY urutan DESC LIMIT 1");
+    const highestNimValue = highestNimResult.rows[0]?.urutan || 0;
+
+    const nextNimValue = (parseInt(highestNimValue) + 1).toString().padStart(3, "0");
+
     let kodekelas = "";
 
     if (req.body.kelas === "S1-INFORMATIKA") {
-      kodekelas = `${angkatan}983${nextNimValue}`;
+      kodekelas = `${angkatan.toString().slice(-2)}.983.${nextNimValue}`;
     } else if (req.body.kelas === "S1-ILMU KOMPUTER") {
       kodekelas = `${angkatan}456${nextNimValue}`;
     } else if (req.body.kelas === "S1-AKUNTANSI") {
@@ -18,10 +22,6 @@ const postTambahMahasiswa = async (req, res) => {
       kodekelas = `${angkatan}000${nextNimValue}`;
     }
 
-   
-   
-
-    // Insert the data into the mahasiswa table
     await knex.table("mahasiswa").insert({
       nama: req.body.nama,
       tempatlahir: req.body.tempatlahir,
@@ -43,7 +43,7 @@ const postTambahMahasiswa = async (req, res) => {
       kelas: req.body.kelas,
       nim: kodekelas,
       photo: photopath,
-      tahunangkatan: req.body.tahunangkatan,
+      tahunangkatan: angkatan,
     });
 
     res.redirect("/tambah-mahasiswa");

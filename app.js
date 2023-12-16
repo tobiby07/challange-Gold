@@ -19,7 +19,7 @@ app.use(loginPageRoute);
 app.use(dashboardRouter);
 
 // inisialisasi server
-const port = 3000;
+const port = 3001;
 
 const start = () => {
   console.log(`Server is running on ${port}`);

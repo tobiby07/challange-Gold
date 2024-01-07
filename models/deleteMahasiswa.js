@@ -2,9 +2,9 @@ const { knex } = require("../dbConnecting");
 
 const deletemahasiswa = async (req, res) => {
     try {
-      const mahasiswaId = req.params.id;
+      const mahasiswaNim = req.params.nim;
   
-      const mahasiswa = await knex.table("mahasiswa").where({ id: mahasiswaId }).first();
+      const mahasiswa = await knex.table("mahasiswa").where({ nim: mahasiswaNim }).first();
       if (!mahasiswa) {
         return res.status(404).send("Mahasiswa not found");
       }
@@ -17,9 +17,9 @@ const deletemahasiswa = async (req, res) => {
           console.error("Error deleting photo:", err);
         }
       }
-      await knex.table("mahasiswa").where({ id: mahasiswaId }).del();
+      await knex.table("mahasiswa").where({ nim: mahasiswaNim }).del();
       console.log("Mahasiswa deleted successfully");
-      res.redirect('/daftar-mahasiswa')
+      res.redirect('/dashboard/daftar-mahasiswa')
     } catch (err) {
       console.log(err);
       res.status(500).send("An error occurred while deleting data.");

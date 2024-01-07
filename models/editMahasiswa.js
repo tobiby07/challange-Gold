@@ -3,9 +3,9 @@ const { knex } = require("../dbConnecting");
 
 const putEditMahasiswa = async (req, res) => {
   try {
-    const mahasiswaId = req.params.id;
+    const mahasiswaNim = req.params.nim;
 
-    const existingMahasiswa = await knex.table("mahasiswa").where({ id: mahasiswaId }).first();
+    const existingMahasiswa = await knex.table("mahasiswa").where({ nim: mahasiswaNim }).first();
 
     if (!existingMahasiswa) {
       return res.status(404).send("Mahasiswa not found");
@@ -30,7 +30,6 @@ const putEditMahasiswa = async (req, res) => {
       jurusan: req.body.jurusan,
       fakultas: req.body.fakultas,
       kelas: req.body.kelas,
-      nim: req.body.nim,
     };
 
     // chek jika ada photo baru
@@ -50,7 +49,7 @@ const putEditMahasiswa = async (req, res) => {
       }
     }
 
-    await knex.table("mahasiswa").where({ id: mahasiswaId }).update(updatedMahasiswa);
+    await knex.table("mahasiswa").where({ nim: mahasiswaNim}).update(updatedMahasiswa);
     console.log("Mahasiswa updated successfully");
     res.redirect(`/daftar-mahasiswa`);
   } catch (err) {

@@ -1,31 +1,25 @@
+
+
 const { knex } = require("../dbConnecting");
 
 const postTambahMahasiswa = async (req, res) => {
   try {
     const photopath = req.file ? `/uploads/${req.file.filename}` : null;
     const angkatan = new Date().getFullYear();
+    const departmentCode = getDepartmentCode(req.body.kelas); 
 
     const highestNimResult = await knex.raw(`
-    SELECT split_part(nim, '.', 3) as urutan 
-    FROM mahasiswa 
-    WHERE tahunangkatan = ${angkatan} 
-    ORDER BY urutan DESC 
-    LIMIT 1
-  `);
+      SELECT split_part(nim, '.', 3) as urutan 
+      FROM mahasiswa 
+      WHERE tahunangkatan = ${angkatan} AND kelas = '${req.body.kelas}'
+      ORDER BY urutan DESC 
+      LIMIT 1
+    `);
+
     const highestNimValue = highestNimResult.rows[0]?.urutan || 0;
     const nextNimValue = (parseInt(highestNimValue) + 1).toString().padStart(3, "0");
 
-    let kodekelas = "";
-
-    if (req.body.kelas === "S1-INFORMATIKA") {
-      kodekelas = `${angkatan.toString().slice(-2)}.983.${nextNimValue}`;
-    } else if (req.body.kelas === "S1-ILMU KOMPUTER") {
-      kodekelas = `${angkatan}456${nextNimValue}`;
-    } else if (req.body.kelas === "S1-AKUNTANSI") {
-      kodekelas = `${angkatan}123${nextNimValue}`;
-    } else {
-      kodekelas = `${angkatan}000${nextNimValue}`;
-    }
+    const kodekelas = `${angkatan.toString().slice(-2)}.${departmentCode}.${nextNimValue}`;
 
     await knex.table("mahasiswa").insert({
       nama: req.body.nama,
@@ -51,10 +45,23 @@ const postTambahMahasiswa = async (req, res) => {
       tahunangkatan: angkatan,
     });
 
-    res.redirect("/tambah-mahasiswa");
+    res.redirect("/dashboard/tambah-mahasiswa");
   } catch (err) {
     console.log(err);
     res.send("An error occurred while adding data.");
+  }
+};
+
+// kode kelas 
+const getDepartmentCode = (kelas) => {
+  if (kelas === "S1-INFORMATIKA") {
+    return "983";
+  } else if (kelas === "S1-ILMU KOMPUTER") {
+    return "456";
+  } else if (kelas === "S1-AKUNTANSI") {
+    return "123";
+  } else {
+    return "000";
   }
 };
 

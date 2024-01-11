@@ -4,6 +4,7 @@ const jwt = require('jsonwebtoken');
 
 const jwtSecret = 'a1783019dc7fbb26aff87d7366d1812505a30e34410baf858632503714cea8343900d4';
 
+
 // Register user
 const tambahUser = async (req, res) => {
   try {

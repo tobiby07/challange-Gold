@@ -5,8 +5,8 @@ const loginPageRoute = express.Router();
 
 loginPageRoute.get("/", loginPage);
 loginPageRoute.post("/register", tambahUser);
-loginPageRoute.post('/login',loginUser)
-loginPageRoute.get('/logout',logoutUser)
+loginPageRoute.post("/login", loginUser);
+loginPageRoute.get("/logout", logoutUser);
 
 module.exports = {
   loginPageRoute,

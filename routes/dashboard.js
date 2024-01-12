@@ -6,7 +6,9 @@ const { postTambahMahasiswa } = require("../models/tambahMahasiswa");
 const { upload } = require("../controller/z-index-Controller");
 const { deletemahasiswa } = require("../models/deleteMahasiswa");
 const { putEditMahasiswa } = require("../models/editMahasiswa");
+const { authUser } = require("../models/auth");
 
+dashboardRouter.use(authUser);
 dashboardRouter.get("/dashboard", homePage);
 dashboardRouter.get("/dashboard/tambah-mahasiswa", getTambahMahasiswa);
 dashboardRouter.get("/dashboard/daftar-mahasiswa", datamahasiswa);

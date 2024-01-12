@@ -6,6 +6,8 @@ const { notFound } = require("./controller/z-index-Controller");
 const { dashboardRouter } = require("./routes/dashboard");
 const { loginPageRoute } = require("./routes/landingPage");
 const session = require('express-session');
+const cookieParser = require("cookie-parser");
+
 
 app.set("view engine", "ejs");
 app.use(expressEjsLayout);
@@ -15,13 +17,13 @@ app.use("/uploads", express.static("public/uploads"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
-
+app.use(cookieParser())
 app.use(session({
-  secret: 'your secret here',
+  secret: 'mySecretKey',
   resave: false,
-  saveUninitialized: true,
-  cookie: { secure: false }
- }));
+  saveUninitialized: false
+}));
+
 
 app.use(loginPageRoute);
 app.use(dashboardRouter);

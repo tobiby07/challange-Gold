@@ -5,8 +5,8 @@ const jwt = require("jsonwebtoken");
 const jwtSecret = "a1783019dc7fbb26aff87d7366d1812505a30e34410baf858632503714cea8343900d4";
 
 // Function jwt ke cookie
-const setTokenCookie = (res, userId) => {
-  const token = jwt.sign({ userId }, jwtSecret, { expiresIn: "1h" });
+const setTokenCookie = (res, userId, username) => {
+  const token = jwt.sign({ userId, username }, jwtSecret, { expiresIn: "1h" });
   res.cookie("token", token, { maxAge: 3600000, httpOnly: true });
 };
 
@@ -31,7 +31,7 @@ const tambahUser = async (req, res) => {
 
 // Auth middleware
 const authUser = (req, res, next) => {
-  const token = req.cookies.token || req.headers.authorization;
+  const token = req.cookies.token;
 
   console.log("Received Token:", token);
 
@@ -46,11 +46,29 @@ const authUser = (req, res, next) => {
       return res.redirect("/?error=Unauthorized");
     }
 
-    req.user = { userId: decoded.userId };
+    req.user = {
+      userId: decoded.userId,
+      username: decoded.username,
+    };
+    
+    res.locals.username = req.user.username
+
     console.log("User Authenticated:", req.user);
 
     next();
   });
+};
+
+
+// mencegah kembali ke / saat token tersedia
+const checkTokenAndRedirect = (req, res, next) => {
+  const token = req.cookies.token;
+
+  if (token) {
+    return res.redirect("/dashboard");
+  }
+
+  next();
 };
 
 // Login user
@@ -68,7 +86,7 @@ const loginUser = async (req, res) => {
       return res.redirect("/?error=Incorrect password");
     }
 
-    setTokenCookie(res, user.id);
+    setTokenCookie(res, user.id, user.username);
 
     res.redirect("/dashboard");
   } catch (err) {
@@ -88,4 +106,5 @@ module.exports = {
   loginUser,
   logoutUser,
   authUser,
+  checkTokenAndRedirect,
 };

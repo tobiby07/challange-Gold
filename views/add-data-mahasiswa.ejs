@@ -2,222 +2,303 @@
   <form action="/tambah-mahasiswa" method="post" enctype="multipart/form-data">
     <!-- data diri mahasiswa -->
 
-    <div class="form-group">
-      <label class="col-md-4 control-label" for="nama">Nama:</label>
-      <div class="col-md-6 inputGroupContainer">
-        <div class="input-group">
-          <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-          <input class="form-control" type="text" id="nama" name="nama" />
-        </div>
-      </div>
+    <div class="alert" style="background-color:rgb(205, 179, 101);">
+     <center class="h3"> <strong>PENDAFTARAN MAHASISWA BARU <br> UMIKOM UNIVERSITY <br> TAHUN AJARAN 2024/2025  </strong></center>
     </div>
 
-    <div class="form-group">
-      <label fclass="col-md-4 control-label" or="tempatlahir">Tempat Lahir:</label>
-      <div class="col-md-6 inputGroupContainer">
-        <div class="input-group">
-          <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-          <input class="form-control" type="text" id="tempatlahir" name="tempatlahir" />
-        </div>
-      </div>
+    <div class="alert alert-dark">
+      <strong>Data Diri</strong>
     </div>
 
-    <div class="form-group">
-      <label class="col-md-4 control-label" for="tanggallahir">Tanggal Lahir:</label>
-
-      <div class="col-md-6 inputGroupContainer">
-        <div class="input-group">
-          <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-          <input class="form-control" type="date" id="tanggallahir" name="tanggallahir" />
+    <div class="row" style="margin-top: 10px">
+      <div class="col-sm-7">
+        <div class="form-group">
+          <label>Nama Lengkap:</label>
+          <input type="text" name="nama" class="form-control" placeholder="Masukan Nama Lengkap" id="nama" />
         </div>
       </div>
-    </div>
 
-    <div class="form-group">
-      <label class="col-md-4 control-label" for="jeniskelamin">Jenis Kelamin:</label>
+      <div class="col-sm-5">
+        <div class="form-group">
+          <label>NIK :</label>
+          <input type="text" name="tempatlahir" class="form-control" placeholder="Masukan Tempat Lahir" id="tempatlahir" />
+        </div>
+      </div>
 
-      <div class="col-md-6 inputGroupContainer">
-        <div class="input-group">
-          <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-          <select class="form-control" id="jeniskelamin" name="jeniskelamin">
-            <option value="lakilaki">Laki-Laki</option>
-            <option value="perempuan">Perempuan</option>
+      <div class="col-sm-4" style="margin-top: 20px">
+        <div class="form-group">
+          <label>Tempat Lahir :</label>
+          <input type="text" name="tempatlahir" class="form-control" placeholder="Masukan Tempat Lahir" id="tempatlahir" />
+        </div>
+      </div>
+
+      <div class="col-sm-4" style="margin-top: 20px">
+        <div class="form-group">
+          <label>Tanngal Lahir :</label>
+          <input type="date" name="tanggallahir" class="form-control" placeholder="Masukan Nama Lengkap" id="tanggallahir" />
+        </div>
+      </div>
+
+      <div class="col-sm-4" style="margin-top: 20px">
+        <div class="form-group">
+          <label>Jenis Kelamin :</label>
+          <select class="form-control" name="jeniskelamin" id="jeniskelamin">
+            <option value="Laki-Laki">Laki-Laki</option>
+            <option value="Perempuan">Perempuan</option>
           </select>
         </div>
       </div>
-    </div>
 
-    <div class="form-group">
-      <label class="col-md-4 control-label" for="alamat">Alamat Lengkap:</label>
-
-      <div class="col-md-6 inputGroupContainer">
-        <div class="input-group">
-          <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-          <input class="form-control" type="text" id="alamat" name="alamat" />
+      <div class="col-sm-6" style="margin-top: 20px">
+        <div class="form-group">
+          <label>Alamat Lengkap :</label>
+          <textarea class="form-control" name="alamat" rows="2" id="alamat"></textarea>
         </div>
       </div>
-    </div>
 
-    <div class="form-group">
-      <label class="col-md-4 control-label" for="alamatdomisili">Alamat Domisisli:</label>
-
-      <div class="col-md-6 inputGroupContainer">
-        <div class="input-group">
-          <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-          <input class="form-control" type="text" id="alamatdomisili" name="alamatdomisili" />
-        </div>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <label class="col-md-4 control-label" for="kontakhp">No Telp/Hp:</label>
-
-      <div class="col-md-6 inputGroupContainer">
-        <div class="input-group">
-          <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-          <input class="form-control" type="number" id="kontakhp" name="kontakhp" />
-        </div>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <label class="col-md-4 control-label" for="email">E-mail:</label>
-
-      <div class="col-md-6 inputGroupContainer">
-        <div class="input-group">
-          <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-          <input class="form-control" type="email" id="email" name="email" />
-        </div>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <label class="col-md-4 control-label" for="namaayah">Nama Orangtua Kandung (Ayah):</label>
-
-      <div class="col-md-6 inputGroupContainer">
-        <div class="input-group">
-          <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-          <input class="form-control" type="text" id="namaayah" name="namaayah" />
-        </div>
-      </div>
-    </div>
-
-    <!-- data orangtua/ wali -->
-
-    <div class="form-group">
-      <label class="col-md-4 control-label" for="namaibu">Nama Orangtua Kandung (ibu):</label>
-
-      <div class="col-md-6 inputGroupContainer">
-        <div class="input-group">
-          <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-          <input class="form-control" type="text" id="namaibu" name="namaibu" />
-        </div>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <label class="col-md-4 control-label" for="namawali">Nama Orangtua Wali</label>
-
-      <div class="col-md-6 inputGroupContainer">
-        <div class="input-group">
-          <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-          <input class="form-control" ype="text" id="namawali" name="namawali" />
-        </div>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <label class="col-md-4 control-label" for="kontakhporangtua">Nomor Telp/Hp:</label>
-
-      <div class="col-md-6 inputGroupContainer">
-        <div class="input-group">
-          <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-          <input class="form-control" type="number" id="kontakhporangtua" name="kontakhporangtua" />
-        </div>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <label class="col-md-4 control-label" for="pekerjaanorangtua">Pekerjaan:</label>
-
-      <div class="col-md-6 inputGroupContainer">
-        <div class="input-group">
-          <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-          <input class="form-control" type="text" id="pekerjaanorangtua" name="pekerjaanorangtua" />
-        </div>
-      </div>
-    </div>
-
-    <!-- dara riwayat pendidikan  -->
-
-    <div class="form-group">
-      <label class="col-md-4 control-label" for="asalsekolah">Asal Sekolah SMA/K:</label>
-      <div class="col-md-6 inputGroupContainer">
-        <div class="input-group">
-          <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-          <input class="form-control"type="class="form-control"xt" id="asalsekolah" name="asalsekolah">
-        </div>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <label class="col-md-4 control-label" for="tahunlulus">Lulus Tahun:</label>
-      <div class="col-md-6 inputGroupContainer">
-        <div class="input-group">
-          <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-          <input class="form-control"type="class="form-control"xt" id="tahunlulus" name="tahunlulus">
-        </div>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <label class="col-md-4 control-label" for="jurusan">Jurusan :</label>
-      <div class="col-md-6 inputGroupContainer">
-        <div class="input-group">
-          <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-          <input class="form-control" type="text" id="jurusan" name="jurusan" />
-        </div>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <label class="col-md-4 control-label" for="fakultas">Fakultas:</label>
-
-      <div class="col-md-6 inputGroupContainer">
-        <div class="input-group">
-          <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-          <select class="form-control" id="fakultas" name="fakultas">
-            <option value="S1-INFORMATIKA">S1-INFORMATIKA</option>
-            <option value="S1-ILMU KOMPUTER">S1-ILMU KOMPUTER</option>
-            <option value="S1-AKUNTANSI">S1-AKUNTANSI</option>
+      <div class="col-sm-3" style="margin-top: 20px">
+        <div class="form-group">
+          <label>Provinsi :</label>
+          <select class="form-control" name="provinsi" id="provinsi">
+            <option value="D.I.Yogyakarta">D.I.Yogyakarta</option>
+            <option value="Jawa Barat">Jawa Barat</option>
+            <option value="Jawa Tengah">Jawa Tengah</option>
+            <option value="D.K.I Jakarta">D.K.I Jakarta</option>
+            <option value="Banten">Banten</option>
+            <option value="Jawa Timur">jawa Timur</option>
           </select>
         </div>
       </div>
-    </div>
 
-    <!-- data kemahasiswaan -->
-
-    <div class="form-group">
-      <label class="col-md-4 control-label" for="kelas">Kelas:</label>
-
-      <div class="col-md-6 inputGroupContainer">
-        <div class="input-group">
-          <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-          <select class="form-control" id="kelas" name="kelas">
-            <option value="S1-INFORMATIKA">S1-INFORMATIKA</option>
-            <option value="S1-ILMU KOMPUTER">S1-ILMU KOMPUTER</option>
-            <option value="S1-AKUNTANSI">S1-AKUNTANSI</option>
+      <div class="col-sm-3" style="margin-top: 20px">
+        <div class="form-group">
+          <label>Kabupaten/Kota:</label>
+          <select class="form-control" name="kabupatenkota" id="kabupatenkota">
+            <option value="Yogyakarta">Yogyakarta</option>
+            <option value="Sleman">Sleman</option>
+            <option value="Bantul">Bantul</option>
+            <option value="Kulon Progo">Kulon Progo</option>
+            <option value="Gunung Kidul">Gunung Kidul</option>
           </select>
+        </div>
+      </div>
+
+      <div class="col-sm-4" style="margin-top: 20px">
+        <div class="form-group">
+          <label>Alamat Domisili:</label>
+          <input type="text" name="alamatdomisili" class="form-control" placeholder="Kabupaten/Kota Domisili" id="alamatdomisili" />
+        </div>
+      </div>
+
+      <div class="col-sm-4" style="margin-top: 20px">
+        <div class="form-group">
+          <label>Kontak Hp :</label>
+          <input type="number" name="kontakhp" class="form-control" placeholder="08123xxxxxxx" id="kontakhp" />
+        </div>
+      </div>
+
+      <div class="col-sm-4" style="margin-top: 20px">
+        <div class="form-group">
+          <label>Email :</label>
+          <input type="email" name="email" class="form-control" placeholder="umikom@students.umikom.ac.id" id="email" />
         </div>
       </div>
     </div>
 
-    <div class="form-group">
-      <label class="col-md-4 control-label" for="photo">Photo:</label>
-      <div class="col-md-6 inputGroupContainer">
-        <div class="input-group">
-          <span class="input-group-addon"><i class="glyphicon glyphicon-camera"></i></span>
-          <input class="form-control" type="file" id="photo" name="photo" accept="image/*" />
+    <div class="alert alert-dark" style="margin-top: 25px">
+      <strong>Data Orang Tua </strong>
+    </div>
+
+    <div class="row" style="margin-top: 10px">
+      <div class="col-sm-7">
+        <div class="form-group">
+          <label>Nama Lengkap:</label>
+          <input type="text" name="nama" class="form-control" placeholder="Masukan Nama Lengkap" id="nama" />
+        </div>
+      </div>
+
+      <div class="col-sm-5">
+        <div class="form-group">
+          <label>NIK :</label>
+          <input type="text" name="tempatlahir" class="form-control" placeholder="Masukan Tempat Lahir" id="tempatlahir" />
+        </div>
+      </div>
+
+      <div class="col-sm-4" style="margin-top: 20px">
+        <div class="form-group">
+          <label>Tempat Lahir :</label>
+          <input type="text" name="tempatlahir" class="form-control" placeholder="Masukan Tempat Lahir" id="tempatlahir" />
+        </div>
+      </div>
+
+      <div class="col-sm-4" style="margin-top: 20px">
+        <div class="form-group">
+          <label>Tanngal Lahir :</label>
+          <input type="date" name="tanggallahir" class="form-control" placeholder="Masukan Nama Lengkap" id="tanggallahir" />
+        </div>
+      </div>
+
+      <div class="col-sm-4" style="margin-top: 20px">
+        <div class="form-group">
+          <label>Jenis Kelamin :</label>
+          <select class="form-control" name="jeniskelamin" id="jeniskelamin">
+            <option value="Laki-Laki">Laki-Laki</option>
+            <option value="Perempuan">Perempuan</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="col-sm-6" style="margin-top: 20px">
+        <div class="form-group">
+          <label>Alamat Lengkap :</label>
+          <textarea class="form-control" name="alamat" rows="2" id="alamat"></textarea>
+        </div>
+      </div>
+
+      <div class="col-sm-3" style="margin-top: 20px">
+        <div class="form-group">
+          <label>Provinsi :</label>
+          <select class="form-control" name="provinsi" id="provinsi">
+            <option value="D.I.Yogyakarta">D.I.Yogyakarta</option>
+            <option value="Jawa Barat">Jawa Barat</option>
+            <option value="Jawa Tengah">Jawa Tengah</option>
+            <option value="D.K.I Jakarta">D.K.I Jakarta</option>
+            <option value="Banten">Banten</option>
+            <option value="Jawa Timur">jawa Timur</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="col-sm-3" style="margin-top: 20px">
+        <div class="form-group">
+          <label>Kabupaten/Kota:</label>
+          <select class="form-control" name="kabupatenkota" id="kabupatenkota">
+            <option value="Yogyakarta">Yogyakarta</option>
+            <option value="Sleman">Sleman</option>
+            <option value="Bantul">Bantul</option>
+            <option value="Kulon Progo">Kulon Progo</option>
+            <option value="Gunung Kidul">Gunung Kidul</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="col-sm-4" style="margin-top: 20px">
+        <div class="form-group">
+          <label>Alamat Domisili:</label>
+          <input type="text" name="alamatdomisili" class="form-control" placeholder="Kabupaten/Kota Domisili" id="alamatdomisili" />
+        </div>
+      </div>
+
+      <div class="col-sm-4" style="margin-top: 20px">
+        <div class="form-group">
+          <label>Kontak Hp :</label>
+          <input type="number" name="kontakhp" class="form-control" placeholder="08123xxxxxxx" id="kontakhp" />
+        </div>
+      </div>
+
+      <div class="col-sm-4" style="margin-top: 20px">
+        <div class="form-group">
+          <label>Email :</label>
+          <input type="email" name="email" class="form-control" placeholder="umikom@students.umikom.ac.id" id="email" />
+        </div>
+      </div>
+    </div>
+
+    <div class="alert alert-dark" style="margin-top: 25px">
+      <strong>Data Sekolah Asal </strong>
+    </div>
+
+    <div class="row" style="margin-top: 10px">
+      <div class="col-sm-7">
+        <div class="form-group">
+          <label>Nama Lengkap:</label>
+          <input type="text" name="nama" class="form-control" placeholder="Masukan Nama Lengkap" id="nama" />
+        </div>
+      </div>
+
+      <div class="col-sm-5">
+        <div class="form-group">
+          <label>NIK :</label>
+          <input type="text" name="tempatlahir" class="form-control" placeholder="Masukan Tempat Lahir" id="tempatlahir" />
+        </div>
+      </div>
+
+      <div class="col-sm-4" style="margin-top: 20px">
+        <div class="form-group">
+          <label>Tempat Lahir :</label>
+          <input type="text" name="tempatlahir" class="form-control" placeholder="Masukan Tempat Lahir" id="tempatlahir" />
+        </div>
+      </div>
+
+      <div class="col-sm-4" style="margin-top: 20px">
+        <div class="form-group">
+          <label>Tanngal Lahir :</label>
+          <input type="date" name="tanggallahir" class="form-control" placeholder="Masukan Nama Lengkap" id="tanggallahir" />
+        </div>
+      </div>
+
+      <div class="col-sm-4" style="margin-top: 20px">
+        <div class="form-group">
+          <label>Jenis Kelamin :</label>
+          <select class="form-control" name="jeniskelamin" id="jeniskelamin">
+            <option value="Laki-Laki">Laki-Laki</option>
+            <option value="Perempuan">Perempuan</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="col-sm-6" style="margin-top: 20px">
+        <div class="form-group">
+          <label>Alamat Lengkap :</label>
+          <textarea class="form-control" name="alamat" rows="2" id="alamat"></textarea>
+        </div>
+      </div>
+
+      <div class="col-sm-3" style="margin-top: 20px">
+        <div class="form-group">
+          <label>Provinsi :</label>
+          <select class="form-control" name="provinsi" id="provinsi">
+            <option value="D.I.Yogyakarta">D.I.Yogyakarta</option>
+            <option value="Jawa Barat">Jawa Barat</option>
+            <option value="Jawa Tengah">Jawa Tengah</option>
+            <option value="D.K.I Jakarta">D.K.I Jakarta</option>
+            <option value="Banten">Banten</option>
+            <option value="Jawa Timur">jawa Timur</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="col-sm-3" style="margin-top: 20px">
+        <div class="form-group">
+          <label>Kabupaten/Kota:</label>
+          <select class="form-control" name="kabupatenkota" id="kabupatenkota">
+            <option value="Yogyakarta">Yogyakarta</option>
+            <option value="Sleman">Sleman</option>
+            <option value="Bantul">Bantul</option>
+            <option value="Kulon Progo">Kulon Progo</option>
+            <option value="Gunung Kidul">Gunung Kidul</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="col-sm-4" style="margin-top: 20px">
+        <div class="form-group">
+          <label>Alamat Domisili:</label>
+          <input type="text" name="alamatdomisili" class="form-control" placeholder="Kabupaten/Kota Domisili" id="alamatdomisili" />
+        </div>
+      </div>
+
+      <div class="col-sm-4" style="margin-top: 20px">
+        <div class="form-group">
+          <label>Kontak Hp :</label>
+          <input type="number" name="kontakhp" class="form-control" placeholder="08123xxxxxxx" id="kontakhp" />
+        </div>
+      </div>
+
+      <div class="col-sm-4" style="margin-top: 20px">
+        <div class="form-group">
+          <label>Email :</label>
+          <input type="email" name="email" class="form-control" placeholder="umikom@students.umikom.ac.id" id="email" />
         </div>
       </div>
     </div>
@@ -226,3 +307,6 @@
   </form>
 </div>
 
+table.increments("id").primary(); table.string("nama"); table.string("tempatlahir"); table.date("tanggallahir"); table.string("jeniskelamin"); table.string("alamat"); table.string("alamatdomisili"); table.integer("kontakhp");
+table.string("email"); table.string("namaayah"); table.string("namaibu"); table.string("namawali"); table.integer("kontakhporangtua"); table.string("asalsekolah"); table.integer("tahunlulus"); table.string("jurusan");
+table.string("fakultas"); table.string("kelas"); table.integer("nim"); table.string("pekerjaanorangtua"); table.string('photo')

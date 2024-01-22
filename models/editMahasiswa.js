@@ -49,9 +49,9 @@ const putEditMahasiswa = async (req, res) => {
       }
     }
 
-    await knex.table("mahasiswa").where({ nim: mahasiswaNim}).update(updatedMahasiswa);
+    await knex.table("mahasiswa").where({ nim: mahasiswaNim }).update(updatedMahasiswa);
     console.log("Mahasiswa updated successfully");
-    res.redirect(`/daftar-mahasiswa`);
+    res.redirect(`dashboard/daftar-mahasiswa`);
   } catch (err) {
     console.log(err);
     res.status(500).send("An error occurred while updating data.");
